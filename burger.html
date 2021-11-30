@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Burger</h1>
+    <h2>Size</h2>
+    <p><input type="checkbox" date-cost="50" date-ccal="20" class="menu">Small</p>
+    <p><input type="checkbox" date-cost="100" date-ccal="40" class="menu">Big</p>
+    <h2>Наполнение</h2>
+    <p><input type="checkbox" date-cost="10" date-ccal="20" class="menu">Cheese</p>
+    <p><input type="checkbox" date-cost="20" date-ccal="5" class="menu">Salad</p>
+    <p><input type="checkbox" date-cost="15" date-ccal="10" class="menu">French fries</p>
+    <h3>Total:</h3>
+    <p>Caloric content:<span id="ccal"></span></p>
+    <p>Price:<span id="price"></span></p>
+    <button id="result">Done</button>
+
+    <script>
+        "use strict";
+
+        document.getElementById('result').onclick = getResult;
+
+        function getResult() {
+            let menu = document.getElementsByClassName('menu');
+            let price = 0;
+            let ccal = 0;
+            for (let i = 0; i < menu.length; i++) {
+                if (menu[i].checked) {
+                    price += parseFloat(menu[i].getAttribute('date-cost'));
+                    ccal += parseFloat(menu[i].getAttribute('date-ccal'));
+                }
+            }
+            document.getElementById('price').innerHTML = price;
+            document.getElementById('ccal').innerHTML = ccal;
+        }
+    </script>
+</body>
+
+</html>
